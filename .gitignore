@@ -1,0 +1,28 @@
+# Logs and system files
+.DS_Store
+Thumbs.db
+
+# Node modules (if using a package manager)
+node_modules/
+npm-debug.log
+yarn-error.log
+pnpm-debug.log
+
+# Build artifacts
+dist/
+out/
+
+# Jekyll build output
+_site/
+.sass-cache/
+.jekyll-cache/
+
+# Logs
+*.log
+
+# Dependencies
+node_modules/
+vendor/
+
+# Temporary files
+*.swp
