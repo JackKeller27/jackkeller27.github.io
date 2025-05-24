@@ -1,12 +1,55 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Jack Keller</title>
-    </head>
-    <body>
-        <h1>Jack Keller</h1>
-        <p>Personal site.</p>
-    </body>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jack Keller Portfolio</title>
+  <link rel="stylesheet" href="styles.css">
+  <script defer src="script.js"></script>
+</head>
+<body>
+  <header>
+    <h1>Jack R. Keller</h1>
+    <p>Modeling & Simulation | Sustainability | City Planning | AI for Societal Good</p>
+  </header>
+
+  <section id="about">
+    <h2>About Me</h2>
+    <p>I'm a Master's student in Computer Science at Georgia Tech (4.0 GPA), specializing in Modeling and Simulation. With concentrations in Intelligence (AI) and a minor in Sustainable Cities, I've interned at Honeywell and J.J. Keller & Associates, taught at Georgia Tech, and conducted field research in Puerto Rico on post-disaster recovery. I love using code to explore, explain, and improve complex systems.</p>
+  </section>
+
+  <section id="interests">
+    <h2>What I'm Looking For</h2>
+    <p>I'm passionate about leveraging software and simulation to improve cities, sustainability, and quality of life. I'm especially drawn to solving hard systems problems in government, infrastructure, and civic tech—places where rigorous modeling can make a real difference for communities.</p>
+  </section>
+
+  <section id="projects">
+    <h2>Projects</h2>
+    <div class="carousel">
+      <button class="nav left" onclick="moveSlide(-1)">&#10094;</button>
+      <div class="carousel-track">
+        <div class="project active">
+          <img src="images/kapyong.jpg" alt="Kapyong Simulation">
+          <h3>Battle of Kapyong Defense Simulation</h3>
+          <p>Agent-based model exploring terrain-weapon tradeoffs in military defense. Presented findings to professors, generals, and officials.</p>
+        </div>
+        <div class="project">
+          <img src="images/car-classifier.jpg" alt="Car Classifier">
+          <h3>Car Image Classification</h3>
+          <p>Used CNN and PCA to classify car models from images with ~88% accuracy. Employed PyTorch and data augmentation techniques.</p>
+        </div>
+        <div class="project">
+          <img src="images/campus-portal.jpg" alt="Campus Portal">
+          <h3>Campus Discovery Portal</h3>
+          <p>Full-stack React + Java Spring Boot portal to help students discover organizations and events on campus. Built with Scrum methodology.</p>
+        </div>
+      </div>
+      <button class="nav right" onclick="moveSlide(1)">&#10095;</button>
+    </div>
+  </section>
+
+  <footer>
+    <p>Connect with me: <a href="https://www.linkedin.com/in/jack-robert-keller/">LinkedIn</a> | jackrobert0627@outlook.com</p>
+  </footer>
+</body>
 </html>
