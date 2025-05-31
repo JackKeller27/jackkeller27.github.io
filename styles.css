@@ -40,8 +40,8 @@ html, body {
   font-size: 1.25rem;
 }
 
-#about, #interests, #projects {
-  background: #ffffff; /* white background for readability */
+#about, #experience, #projects {
+  background: linear-gradient(rgba(255,255,255,0.5), rgba(255,255,255,0.5)), url('background.png') center/cover no-repeat;
   color: #333;
 }
 
