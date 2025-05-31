@@ -95,9 +95,9 @@ html, body {
 
 /* Projects carousel  */
 #projects {
-  padding: 40px 20px;   /* adjusted padding */
+  padding: 40px 20px;
   box-sizing: border-box;
-  margin: 20px 0;       /* added margin */
+  margin: 20px 0;
 }
 
 #projects .carousel {
@@ -111,7 +111,7 @@ html, body {
 
 #projects .project {
   min-width: 100%;
-  padding: 1rem;
+  padding: 2rem;  /* increased padding */
   background: white;
   box-shadow: 0 2px 8px rgba(0,0,0,0.1);
   text-align: center;
@@ -119,41 +119,41 @@ html, body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.5rem;
-  height: calc(100vh - 140px); /* adjusted to account for header, footer, and margins */
+  gap: 1rem;  /* increased gap */
+  height: calc(100vh - 140px);
   overflow-y: auto;
 }
 
 #projects .project img,
 #projects .project video {
   max-width: 100%;
-  max-height: 40vh;
+  max-height: 50vh;  /* increased from 40vh */
   object-fit: contain;
   border-radius: 4px;
-  margin-bottom: 0.5rem;
+  margin-bottom: 1rem;  /* increased margin */
 }
 
 #projects .project h3 {
-  margin: 0.3rem 0;
-  font-size: 1.2rem;
+  margin: 0.5rem 0;  /* increased margin */
+  font-size: 1.4rem;  /* increased font size */
   color: #004466;
 }
 
 #projects .project p {
-  font-size: 0.85rem;
-  line-height: 1.2;
-  max-width: 500px;
+  font-size: 1rem;  /* increased font size */
+  line-height: 1.4;  /* increased line height */
+  max-width: 600px;  /* increased max-width */
   margin: 0 auto;
   color: #333;
 }
 
 #projects .nav {
-  width: 28px;
-  height: 28px;
+  width: 32px;  /* slightly larger buttons */
+  height: 32px;
   background-color: rgba(0, 0, 0, 0.6);
   color: white;
   border: none;
-  font-size: 1rem;
+  font-size: 1.2rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -166,11 +166,11 @@ html, body {
 }
 
 #projects .nav.left {
-  left: 6px;
+  left: 40px;  /* moved inward from 6px */
 }
 
 #projects .nav.right {
-  right: 6px;
+  right: 40px;  /* moved inward from 6px */
 }
 
 #projects .nav:hover,
