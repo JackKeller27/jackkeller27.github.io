@@ -82,7 +82,6 @@ html, body {
   color: rgba(224, 224, 224, 0.8);
   pointer-events: none;
   user-select: none;
-  content: "▼";                  /* Unicode “down chevron” */
   display: inline-block;
   animation: bounce 1.5s ease-in-out infinite;
 }
