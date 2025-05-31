@@ -33,8 +33,8 @@ sections.forEach((sec, idx) => {
 // Show sticky header/footer once past first section
 const stickyHeader = document.createElement('header');
 stickyHeader.className = 'sticky-header';
-stickyHeader.innerHTML = '<p>Jack Keller</p>';
-document.body.appendChild(stickyHeader);
+// stickyHeader.innerHTML = '<p>Jack Keller</p>';
+// document.body.appendChild(stickyHeader);
 
 const stickyFooter = document.createElement('footer');
 stickyFooter.className = 'sticky-footer';

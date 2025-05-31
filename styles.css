@@ -27,7 +27,7 @@ html, body {
   background-size: cover;
   background-position: center;
   box-sizing: border-box;
-  padding: 2rem;
+  padding: 1rem;
   opacity: 0;
   transition: opacity 0.3s ease;
 }
@@ -166,11 +166,11 @@ html, body {
 }
 
 #projects .nav.left {
-  left: 40px;
+  left: 30px;
 }
 
 #projects .nav.right {
-  right: 40px;
+  right: 30px;
 }
 
 #projects .nav:hover,
