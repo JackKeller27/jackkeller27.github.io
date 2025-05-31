@@ -93,109 +93,105 @@ html, body {
   100% { transform: translateX(-50%) translateY(0);   }
 }
 
-/* Carousel & Projects */
-#projects .carousel {
-  position: relative;
-  width: 80%;               /* Limit carousel width to 80% of section */
-  max-width: 900px;         /* Never exceed 900px even on large screens */
-  margin: 2rem auto;        /* Center horizontally with some vertical spacing */
-  overflow: hidden;
+/* 1. Ensure #projects section has extra bottom padding so content 
+      never gets hidden under the sticky footer. Adjust “80px” 
+      if your footer is taller or shorter. */
+#projects {
+  padding-bottom: 80px;    /* leave space for sticky footer */
+  box-sizing: border-box;  /* so padding is counted inside 100vh */
 }
 
+/* 2. Carousel container: remove any forced height/max-height so 
+      it grows naturally within the section (minus the bottom padding). */
+#projects .carousel {
+  position: relative;
+  width: 80%;
+  max-width: 900px;
+  margin: 2rem auto;   /* vertical margin + center horizontally */
+  overflow: hidden;    /* keep slides inside */
+  /* REMOVE any `height:` or `max-height:` rules here */
+}
+
+/* 3. Flex container for sliding effect (unchanged) */
 #projects .carousel-track {
   display: flex;
   transition: transform 0.5s ease-in-out;
 }
 
+/* 4. Each slide takes 100% of carousel width (unchanged) */
 #projects .project {
   min-width: 100%;
-  padding: 1.5rem;           /* Add more padding inside each slide */
+  padding: 1.5rem;
   background: white;
   box-shadow: 0 2px 8px rgba(0,0,0,0.1);
   text-align: center;
   box-sizing: border-box;
-
-  /* Center content vertically as well, if needed. Adjust as desired: */
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-/* Constrain images & video to avoid overly tall slides */
+/* 5. Constrain images & video so they don’t push text off-screen */
 #projects .project img,
 #projects .project video {
-  max-width: 100%;           /* Never exceed container width */
-  max-height: 60vh;          /* Never exceed 60% of viewport height */
-  object-fit: contain;       /* Preserve aspect ratio */
-  border-radius: 8px;        /* If you want to match the video corner style */
-  margin-bottom: 1rem;       /* Space between media and text */
+  max-width: 100%;
+  max-height: 60vh;     /* keep media from getting too tall */
+  object-fit: contain;
+  border-radius: 8px;
+  margin-bottom: 1rem;
 }
 
-/* Project titles */
+/* 6. Project titles (unchanged) */
 #projects .project h3 {
   margin: 0.5rem 0;
   font-size: 1.5rem;
   color: #004466;
 }
 
-/* Project descriptions */
+/* 7. Project descriptions (unchanged) */
 #projects .project p {
   font-size: 1rem;
   line-height: 1.4;
-  max-width: 700px;          /* Keep text from stretching too wide */
-  margin: 0 auto;            /* Center text under each slide media */
+  max-width: 700px;
+  margin: 0 auto;
   color: #333;
 }
 
-/* Navigation buttons: size, placement, and hover effect */
+/* 8. Navigation buttons – keep them inside, 10px from each edge */
 #projects .nav {
-  width: 40px;
-  height: 40px;
+  width: 36px;
+  height: 36px;
   background-color: rgba(0, 0, 0, 0.6);
   color: white;
   border: none;
-  font-size: 1.5rem;
+  font-size: 1.25rem;
   display: flex;
   align-items: center;
   justify-content: center;
   border-radius: 4px;
   cursor: pointer;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
   z-index: 3;
 }
 
 #projects .nav.left {
-  position: absolute;
-  top: 50%;
-  left: -20px;               /* 20px outside carousel’s left edge */
-  transform: translateY(-50%);
+  left: 10px;
 }
 
 #projects .nav.right {
-  position: absolute;
-  top: 50%;
-  right: -20px;              /* 20px outside carousel’s right edge */
-  transform: translateY(-50%);
+  right: 10px;
 }
 
-#projects .nav:hover {
+#projects .nav:hover,
+#projects .nav:active {
   background-color: rgba(0, 0, 0, 0.8);
 }
 
-/* Ensure the “active” slide is on top */
+/* 9. Active slide layering (unchanged) */
 #projects .project.active {
   z-index: 1;
-}
-
-.main-footer {
-  display: none;
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-  background: #eee;
-  text-align: center;
-  padding: 1rem;
-  z-index: 2;
-  box-sizing: border-box;
 }
 
 a { color: #004466; text-decoration: none; }
