@@ -86,13 +86,14 @@ html, body {
   animation: bounce 1.5s ease-in-out infinite;
 }
 
-/* Optional “bounce” animation to draw attention */
+/* Bouncing animation */
 @keyframes bounce {
   0%   { transform: translateX(-50%) translateY(0);   }
   50%  { transform: translateX(-50%) translateY(-10px); }
   100% { transform: translateX(-50%) translateY(0);   }
 }
 
+/* Projects carousel  */
 /* 1) Add bottom padding to #projects equal to the footer’s height (plus a little extra) */
 #projects {
   padding-bottom: 80px;   /* adjust “80px” if your footer is taller/shorter */
@@ -114,7 +115,7 @@ html, body {
 /* 4. Each slide takes 100% of carousel width (unchanged) */
 #projects .project {
   min-width: 100%;
-  padding: 1.5rem;
+  padding: 2rem;
   background: white;
   box-shadow: 0 2px 8px rgba(0,0,0,0.1);
   text-align: center;
@@ -122,6 +123,9 @@ html, body {
   display: flex;
   flex-direction: column;
   align-items: center;
+  gap: 1rem;
+  height: 100%;
+  overflow-y: auto;
 }
 
 /* 5. Constrain images & video so they don’t push text off-screen */
