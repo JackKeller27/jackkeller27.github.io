@@ -1,66 +1,57 @@
-document.addEventListener("DOMContentLoaded", () => {
-  const stickyHeader = document.querySelector(".sticky-header");
-  const stickyFooter = document.querySelector(".sticky-footer");
-  const hero = document.querySelector(".hero");
-  const sections = document.querySelectorAll("section:not(.hero)");
+const sections = document.querySelectorAll('.section');
+const numSections = sections.length;
 
-  // 1) Temporarily show them so we can measure height
-  stickyHeader.style.display = "block";
-  stickyFooter.style.display = "block";
+window.addEventListener('scroll', () => {
+  // Prevent default scroll behavior
+  // Calculate how far we've scrolled as a fraction of total scrollable distance
+  const scrollY = window.scrollY;
+  const windowH = window.innerHeight;
+  const totalHeight = windowH * (numSections - 1);
+  
+  // Cap scrollY
+  const cappedScroll = Math.min(Math.max(scrollY, 0), totalHeight);
+  const rawIndex = cappedScroll / windowH;
+  const baseIndex = Math.floor(rawIndex);
+  const frac = rawIndex - baseIndex;
 
-  const headerHeight = stickyHeader.offsetHeight;
-  const footerHeight = stickyFooter.offsetHeight;
-
-  // 2) Hide them again initially (we’ll show/hide on scroll)
-  stickyHeader.style.display = "none";
-  stickyFooter.style.display = "none";
-
-  // 3) Compute how tall each section needs to be so content "sits between" header & footer:
-  const availableHeight = window.innerHeight - headerHeight - footerHeight;
-
-  sections.forEach((sec) => {
-    // a) Make sure the section’s content area is at least that tall:
-    sec.style.minHeight = `${availableHeight}px`;
-    // b) Add top‐padding equal to header height, and bottom‐padding equal to footer height,
-    //    so that if your actual text/content is shorter, it still “sits” in the visible zone.
-    sec.style.paddingTop = `${headerHeight}px`;
-    sec.style.paddingBottom = `${footerHeight}px`;
-  });
-
-  // 4) Listen for scroll to fade in sections / toggle sticky header + footer
-  window.addEventListener("scroll", () => {
-    const heroHeight = hero.offsetHeight;
-
-    // Show the sticky header & footer once we've scrolled past the hero:
-    if (window.scrollY > heroHeight) {
-      stickyHeader.style.display = "block";
-      stickyFooter.style.display = "block";
+  sections.forEach((sec, idx) => {
+    if (idx === baseIndex) {
+      sec.style.opacity = 1 - frac;
+    } else if (idx === baseIndex + 1) {
+      sec.style.opacity = frac;
     } else {
-      stickyHeader.style.display = "none";
-      stickyFooter.style.display = "none";
+      sec.style.opacity = '0';
     }
-
-    // Fade‐in logic (unchanged)
-    sections.forEach((section) => {
-      const sectionTop = section.getBoundingClientRect().top;
-      const windowHeight = window.innerHeight;
-      if (sectionTop < windowHeight - 100) {
-        section.classList.add("visible");
-      }
-    });
   });
+});
 
-  // 5) If the user resizes the window, recompute availableHeight for each section:
-  window.addEventListener("resize", () => {
-    const newHeroHeight = hero.offsetHeight;
-    const newHeaderHeight = stickyHeader.offsetHeight;
-    const newFooterHeight = stickyFooter.offsetHeight;
-    const newAvailable = window.innerHeight - newHeaderHeight - newFooterHeight;
+// Initial setup: position each section one after another vertically
+sections.forEach((sec, idx) => {
+  sec.style.top = `${idx * 100}vh`;
+});
 
-    sections.forEach((sec) => {
-      sec.style.minHeight = `${newAvailable}px`;
-      sec.style.paddingTop = `${newHeaderHeight}px`;
-      sec.style.paddingBottom = `${newFooterHeight}px`;
-    });
-  });
+// Show sticky header/footer once past first section
+const stickyHeader = document.createElement('header');
+stickyHeader.className = 'sticky-header';
+stickyHeader.innerHTML = '<h1>Jack R. Keller</h1>';
+document.body.appendChild(stickyHeader);
+
+const stickyFooter = document.createElement('footer');
+stickyFooter.className = 'sticky-footer';
+stickyFooter.innerHTML = '<p>Jack R. Keller</p>';
+document.body.appendChild(stickyFooter);
+
+const mainFooter = document.querySelector('.main-footer');
+
+window.addEventListener('scroll', () => {
+  const scrollY = window.scrollY;
+  if (scrollY > 0) {
+    stickyHeader.style.display = 'block';
+    stickyFooter.style.display = 'block';
+    mainFooter.style.display = 'block';
+  } else {
+    stickyHeader.style.display = 'none';
+    stickyFooter.style.display = 'none';
+    mainFooter.style.display = 'none';
+  }
 });
