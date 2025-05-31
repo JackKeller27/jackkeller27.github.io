@@ -34,7 +34,7 @@ html, body {
 
 /* opening section */
 #hero {
-  background: linear-gradient(rgba(0, 68, 102, 0.02), rgba(0, 68, 102, 0.02)), url('skyline_digital_twin.png') center/cover no-repeat;
+  background: linear-gradient(rgba(0, 68, 102, 0.6), rgba(0, 68, 102, 0.6)), url('skyline_digital_twin.png') center/cover no-repeat;
   color: #f5f7fa;
   text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
   font-size: 1.25rem;
