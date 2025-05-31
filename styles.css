@@ -41,7 +41,7 @@ html, body {
 }
 
 #about, #experience, #projects {
-  background: linear-gradient(rgba(255,255,255,0.5), rgba(255,255,255,0.5)), url('background2.png') center/cover no-repeat;
+  background: white;
   color: #333;
 }
 
@@ -94,28 +94,24 @@ html, body {
 }
 
 /* Projects carousel  */
-/* 1) Add bottom padding to #projects equal to the footer’s height (plus a little extra) */
 #projects {
-  padding-bottom: 80px;   /* adjust “80px” if your footer is taller/shorter */
-  box-sizing: border-box; /* so that padding doesn’t enlarge beyond 100vh */
+  padding: 40px 20px;   /* adjusted padding */
+  box-sizing: border-box;
+  margin: 20px 0;       /* added margin */
 }
 
-/* 2) Optionally, add bottom margin to the carousel itself 
-     so the slide titles sit even further above the footer */
 #projects .carousel {
-  margin-bottom: 40px;    /* half of footer‐padding—tweak as desired */
+  margin-bottom: 20px;
 }
 
-/* 3. Flex container for sliding effect (unchanged) */
 #projects .carousel-track {
   display: flex;
   transition: transform 0.5s ease-in-out;
 }
 
-/* 4. Each slide takes 100% of carousel width (unchanged) */
 #projects .project {
   min-width: 100%;
-  padding: 2rem;
+  padding: 1rem;
   background: white;
   box-shadow: 0 2px 8px rgba(0,0,0,0.1);
   text-align: center;
@@ -123,49 +119,45 @@ html, body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1rem;
-  height: 100%;
+  gap: 0.5rem;
+  height: calc(100vh - 140px); /* adjusted to account for header, footer, and margins */
   overflow-y: auto;
 }
 
-/* 5. Constrain images & video so they don’t push text off-screen */
 #projects .project img,
 #projects .project video {
   max-width: 100%;
-  max-height: 60vh;     /* keep media from getting too tall */
+  max-height: 40vh;
   object-fit: contain;
-  border-radius: 8px;
-  margin-bottom: 1rem;
+  border-radius: 4px;
+  margin-bottom: 0.5rem;
 }
 
-/* 6. Project titles (unchanged) */
 #projects .project h3 {
-  margin: 0.5rem 0;
-  font-size: 1.5rem;
+  margin: 0.3rem 0;
+  font-size: 1.2rem;
   color: #004466;
 }
 
-/* 7. Project descriptions (unchanged) */
 #projects .project p {
-  font-size: 1rem;
-  line-height: 1.4;
-  max-width: 700px;
+  font-size: 0.85rem;
+  line-height: 1.2;
+  max-width: 500px;
   margin: 0 auto;
   color: #333;
 }
 
-/* 8. Navigation buttons – keep them inside, 10px from each edge */
 #projects .nav {
-  width: 36px;
-  height: 36px;
+  width: 28px;
+  height: 28px;
   background-color: rgba(0, 0, 0, 0.6);
   color: white;
   border: none;
-  font-size: 1.25rem;
+  font-size: 1rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 4px;
+  border-radius: 3px;
   cursor: pointer;
   position: absolute;
   top: 50%;
@@ -174,11 +166,11 @@ html, body {
 }
 
 #projects .nav.left {
-  left: 10px;
+  left: 6px;
 }
 
 #projects .nav.right {
-  right: 10px;
+  right: 6px;
 }
 
 #projects .nav:hover,
@@ -186,7 +178,6 @@ html, body {
   background-color: rgba(0, 0, 0, 0.8);
 }
 
-/* 9. Active slide layering (unchanged) */
 #projects .project.active {
   z-index: 1;
 }
