@@ -93,23 +93,16 @@ html, body {
   100% { transform: translateX(-50%) translateY(0);   }
 }
 
-/* 1. Ensure #projects section has extra bottom padding so content 
-      never gets hidden under the sticky footer. Adjust “80px” 
-      if your footer is taller or shorter. */
+/* 1) Add bottom padding to #projects equal to the footer’s height (plus a little extra) */
 #projects {
-  padding-bottom: 80px;    /* leave space for sticky footer */
-  box-sizing: border-box;  /* so padding is counted inside 100vh */
+  padding-bottom: 80px;   /* adjust “80px” if your footer is taller/shorter */
+  box-sizing: border-box; /* so that padding doesn’t enlarge beyond 100vh */
 }
 
-/* 2. Carousel container: remove any forced height/max-height so 
-      it grows naturally within the section (minus the bottom padding). */
+/* 2) Optionally, add bottom margin to the carousel itself 
+     so the slide titles sit even further above the footer */
 #projects .carousel {
-  position: relative;
-  width: 80%;
-  max-width: 900px;
-  margin: 2rem auto;   /* vertical margin + center horizontally */
-  overflow: hidden;    /* keep slides inside */
-  /* REMOVE any `height:` or `max-height:` rules here */
+  margin-bottom: 40px;    /* half of footer‐padding—tweak as desired */
 }
 
 /* 3. Flex container for sliding effect (unchanged) */
