@@ -41,7 +41,7 @@ html, body {
 }
 
 #about, #experience, #projects {
-  background: linear-gradient(rgba(255,255,255,0.5), rgba(255,255,255,0.5)), url('background.png') center/cover no-repeat;
+  background: linear-gradient(rgba(255,255,255,0.5), rgba(255,255,255,0.5)), url('background2.png') center/cover no-repeat;
   color: #333;
 }
 
