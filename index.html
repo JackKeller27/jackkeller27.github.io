@@ -27,9 +27,7 @@
         <p>
           Hello! My name is Jack Keller, and I’m a Master’s student at Georgia Tech studying computer science and specializing in Modeling & Simulation. I graduate this December, and I’m currently pursuing full-time software engineering roles beginning as early as January 2026.
           <br><br>
-          As a technical yet people-oriented person, I find deep fulfillment in helping others learn and succeed. My education, alongside several software engineering internships at J.J. Keller &amp; Associates, Inc. and Honeywell, have provided me with a strong computer science foundation—particularly in modeling, simulation, and AI. However, I believe what really sets me apart is my ability to break down complex concepts into clear and comprehensible terms, helping others understand and grow too. Whether TAing Algorithms and Computer Organization and Programming at Georgia Tech for over 2 years, or conducting post-disaster research in Puerto Rico to help communities recover faster, I’ve learned that my passion truly lies in utilizing technology to improve people's lives and society as a whole.
-          <br><br>
-          The purpose of this site is to showcase a bit of my experience, what I’m passionate about, and some of the projects I’m most proud of. If you’d like to get in touch, please see my contact info below and reach out!
+          The purpose of this site is to showcase a bit of my experience, what I’m passionate about, and some of the projects I’m most proud of. If you’d like to get in touch, please see below and reach out!
         </p>
       </div>
         <img src="Headshot.jpg" alt="Portrait Photo" class="portrait" style="max-width: 200px; border-radius: 12px; object-fit: cover; align-self: flex-start;">
@@ -38,10 +36,20 @@
     <div class="down-arrow">▼</div>
   </section>
 
-  <!-- Interests Section -->
-  <section class="section" id="interests">
-    <h2>My Interests</h2>
-    <p>I'm passionate about leveraging software and simulation to improve cities, sustainability, and quality of life. I'm especially drawn to solving hard systems problems in government, infrastructure, and civic tech—places where rigorous modeling can make a real difference for communities.</p>
+  <!-- Experience and Interests Section -->
+  <section class="section" id="experience">
+    <h2>Experience and Interests</h2>
+    <div class="experience-content">
+      <p></p>
+      My experience includes several software engineering internships at <strong>J.J. Keller &amp; Associates, Inc.</strong> and <strong>Honeywell</strong>, as well as research with the <strong>Robotic Musicianship Lab</strong> and <strong>Puerto Rico Planning Studio</strong> (focused on post-disaster recovery) at Georgia Tech.
+      </p>
+      <p>
+      I believe what truly sets me apart is my ability to break down complex concepts into clear, comprehensible terms to help others learn and succeed — a skill I’ve honed over five semesters as a <strong>Teaching Assistant</strong> for Computer Organization &amp; Programming (CS 2110) and Algorithms (CS 3510/11) at GT. I'm very excited to lead Algorithms as <strong>Head TA</strong> in Fall 2025!
+      </p>
+      <p>
+      My primary interests lie in <strong>modeling and simulation</strong> and <strong>artificial intelligence</strong>. I am especially passionate about applying these technologies to infrastructure and systems, urban planning, and sustainability to improve people’s lives and society as a whole.
+      </p>
+    </div>
     <div class="down-arrow">▼</div>
   </section>
 
@@ -52,19 +60,27 @@
       <button class="nav left" onclick="moveSlide(-1)">&#10094;</button>
       <div class="carousel-track">
         <div class="project active">
-          <img src="projects/kapyong.jpg" alt="Kapyong Simulation">
+          <img src="projects/puerto-rico.jpeg" alt="Puerto Rico Planning Studio">
+          <h3>Puerto Rico Planning Studio</h3>
+            <p>
+            Conducted post-disaster reconstruction research in Puerto Rico, utilizing R and GIS mapping tools to analyze construction trends.<br>
+            Represented the team and presented findings at the 2024 Georgia Tech Sustainability Showcase.
+            </p>
+        </div>
+        <div class="project">
+          <video src="projects/kapyong-demo.mp4" alt="Battle of Kapyong Defense Simulation" controls style="max-width: 100%; border-radius: 8px;"></video>
           <h3>Battle of Kapyong Defense Simulation</h3>
-          <p>Agent-based model exploring terrain-weapon tradeoffs in military defense. Presented findings to professors, generals, and officials.</p>
+          <p>Agent-based model exploring terrain-weapon tradeoffs in military defense. Presented findings to professors, generals, and industry professionals.</p>
         </div>
         <div class="project">
-          <img src="projects/car-classifier.jpg" alt="Car Classifier">
+          <img src="projects/car-classification.jpg" alt="ML Car Classifier">
           <h3>Car Image Classification</h3>
-          <p>Used CNN and PCA to classify car models from images with ~88% accuracy. Employed PyTorch and data augmentation techniques.</p>
+          <p>Used a Convolutional Neural Net along with Principal Component Analysis (PCA) to classify car models from images with ~88% accuracy. Built with TensorFlow and the cars196 dataset. </p>
         </div>
         <div class="project">
-          <img src="projects/campus-portal.jpg" alt="Campus Portal">
+          <img src="projects/campus-portal.jpg" alt="Campus Discovery Portal">
           <h3>Campus Discovery Portal</h3>
-          <p>Full-stack React + Java Spring Boot portal to help students discover organizations and events on campus. Built with Scrum methodology.</p>
+          <p>Developed a full-stack React + Java Spring Boot application to help students discover organizations and events on campus. Followed Scrum methodology on a small team.</p>
         </div>
       </div>
       <button class="nav right" onclick="moveSlide(1)">&#10095;</button>
