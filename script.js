@@ -33,7 +33,7 @@ sections.forEach((sec, idx) => {
 // Show sticky header/footer once past first section
 const stickyHeader = document.createElement('header');
 stickyHeader.className = 'sticky-header';
-stickyHeader.innerHTML = '<h1>Jack R. Keller</h1>';
+stickyHeader.innerHTML = '<p>Jack Keller</p>';
 document.body.appendChild(stickyHeader);
 
 const stickyFooter = document.createElement('footer');
@@ -55,4 +55,9 @@ window.addEventListener('scroll', () => {
     stickyFooter.style.display = 'none';
     mainFooter.style.display = 'none';
   }
+});
+
+// Initial page render
+window.addEventListener("load", () => {
+  window.dispatchEvent(new Event("scroll"));
 });

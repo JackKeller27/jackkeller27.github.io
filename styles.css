@@ -32,16 +32,12 @@ html, body {
   transition: opacity 0.3s ease;
 }
 
-.chapter {
-  /* for future use if needed */
-}
-
-/* Each section may have distinct background colors or images */
+/* opening section */
 #hero {
   background: linear-gradient(rgba(0, 68, 102, 0.02), rgba(0, 68, 102, 0.02)), url('skyline_digital_twin.png') center/cover no-repeat;
   color: #f5f7fa;
   text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
-  font-size: 1rem;
+  font-size: 1.25rem;
 }
 
 #about, #interests, #projects {
@@ -75,6 +71,28 @@ html, body {
 
 .sticky-header { top: 0; }
 .sticky-footer { bottom: 0; }
+
+/* Down arrow */
+.down-arrow {
+  position: absolute;
+  bottom: 20px;                  /* 20px up from the bottom */
+  left: 50%;                     /* centered horizontally */
+  transform: translateX(-50%);
+  font-size: 2rem;               /* arrow size (2× normal text) */
+  color: rgba(224, 224, 224, 0.8);
+  pointer-events: none;
+  user-select: none;
+  content: "▼";                  /* Unicode “down chevron” */
+  display: inline-block;
+  animation: bounce 1.5s ease-in-out infinite;
+}
+
+/* Optional “bounce” animation to draw attention */
+@keyframes bounce {
+  0%   { transform: translateX(-50%) translateY(0);   }
+  50%  { transform: translateX(-50%) translateY(-10px); }
+  100% { transform: translateX(-50%) translateY(0);   }
+}
 
 /* Carousel & Projects */
 .carousel {
