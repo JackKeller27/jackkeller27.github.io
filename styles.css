@@ -38,10 +38,10 @@ html, body {
 
 /* Each section may have distinct background colors or images */
 #hero {
-  background: linear-gradient(rgba(0, 68, 102, 0.02), rgba(0, 68, 102, 0.02)), url('banner.jpg') center/cover no-repeat;
-  color: #E0E0E0;
+  background: linear-gradient(rgba(0, 68, 102, 0.02), rgba(0, 68, 102, 0.02)), url('skyline_digital_twin.png') center/cover no-repeat;
+  color: #f5f7fa;
   text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
-  font-size: 3rem;
+  font-size: 1rem;
 }
 
 #about, #interests, #projects {
@@ -57,14 +57,16 @@ html, body {
   margin-top: 1rem;
 }
 
+/* Actual text is in script.js */
 .sticky-header, .sticky-footer {
   /* Remain visible after leaving hero; fade out/in not needed here */
   display: none;
   position: fixed;
   width: 100%;
-  background: rgba(0, 68, 102, 0.8);
-  color: #E0E0E0;
-  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+  background: #ececec;
+  color: #666666;
+
+  /* text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5); */
   z-index: 2;
   text-align: center;
   padding: 0.5rem;

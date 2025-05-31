@@ -38,7 +38,8 @@ document.body.appendChild(stickyHeader);
 
 const stickyFooter = document.createElement('footer');
 stickyFooter.className = 'sticky-footer';
-stickyFooter.innerHTML = '<p>Jack R. Keller</p>';
+stickyFooter.innerHTML = '<p>Contact me: <a href="https://www.linkedin.com/in/jack-robert-keller/">LinkedIn</a> | <a href="mailto:jackrobert0627@outlook.com">jackrobert0627@outlook.com</a> | <a href="https://github.com/JackKeller27">GitHub <img src="github_icon.png" alt="GitHub" style="vertical-align:middle; height:1em; margin-left:4px; position:relative; top:-2px;"></a></p>' +
+        '<p><a href="Jack-Keller-Resume.pdf" download>Download My Resume</a></p>';
 document.body.appendChild(stickyFooter);
 
 const mainFooter = document.querySelector('.main-footer');
