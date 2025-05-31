@@ -1,8 +1,25 @@
-let currentIndex = 0;
+document.addEventListener("DOMContentLoaded", () => {
+  const stickyHeader = document.querySelector('.sticky-header');
+  const stickyFooter = document.querySelector('.sticky-footer');
+  const hero = document.querySelector('.hero');
+  const sections = document.querySelectorAll('.fade-in');
 
-function moveSlide(direction) {
-  const track = document.querySelector('.carousel-track');
-  const projects = document.querySelectorAll('.project');
-  currentIndex = (currentIndex + direction + projects.length) % projects.length;
-  track.style.transform = `translateX(-${currentIndex * 100}%)`;
-}
+  window.addEventListener('scroll', () => {
+    const heroHeight = hero.offsetHeight;
+    if (window.scrollY > heroHeight) {
+      stickyHeader.style.display = 'block';
+      stickyFooter.style.display = 'block';
+    } else {
+      stickyHeader.style.display = 'none';
+      stickyFooter.style.display = 'none';
+    }
+
+    sections.forEach(section => {
+      const sectionTop = section.getBoundingClientRect().top;
+      const windowHeight = window.innerHeight;
+      if (sectionTop < windowHeight - 100) {
+        section.classList.add('visible');
+      }
+    });
+  });
+});

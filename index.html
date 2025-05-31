@@ -8,36 +8,37 @@
   <script defer src="script.js"></script>
 </head>
 <body>
-  <header>
+  <!-- Hero Section -->
+  <section class="hero">
     <h1>Jack R. Keller</h1>
-    <p>Computer Science | Modeling & Simulation | Artificial Intelligence</p>
-    <p>Atlanta, GA 📍</p>
+  </section>
+
+  <!-- Sticky Header -->
+  <header class="sticky-header">
+    <h1>Jack R. Keller</h1>
   </header>
 
-  <section id="about" style="display: flex; align-items: center; gap: 2em;">
-    <div style="flex: 2;">
-      <h2>About Me 👋</h2>
-      <p>I'm a Master's student in Computer Science at Georgia Tech (4.0 GPA), specializing in Modeling and Simulation. With concentrations in Intelligence (AI) and a minor in Sustainable Cities, I've interned at Honeywell and J.J. Keller & Associates, TA'd at Georgia Tech, and conducted field research in Puerto Rico on post-disaster recovery. I love using code to explore, explain, and improve complex systems.</p>
-    </div>
-    <img src="Headshot.jpg" alt="Portrait Photo" style="flex: 1; width: 220px; height: 220px; border-radius: 5%; margin-bottom: 0; object-fit: contain;">
-    </section>
-    <!-- <style>
-    body {
-      margin-left: 1vw;
-      margin-right: 1vw;
-    }
-    </style> -->
+  <!-- Sticky Footer -->
+  <footer class="sticky-footer">
+    <p>Jack R. Keller</p>
+  </footer>
+
+  <section id="about" class="fade-in">
+    <h2>About Me 👋</h2>
+    <p>I'm a Master's student in Computer Science at Georgia Tech (4.0 GPA), specializing in Modeling and Simulation. With concentrations in Intelligence (AI) and a minor in Sustainable Cities, I've interned at Honeywell and J.J. Keller & Associates, TA'd at Georgia Tech, and conducted field research in Puerto Rico on post-disaster recovery. I love using code to explore, explain, and improve complex systems.</p>
+    <img src="Headshot.jpg" alt="Portrait Photo" style="width: 220px; height: 220px; border-radius: 5%; object-fit: contain;">
+  </section>
 
   <hr class="section-divider">
 
-  <section id="interests">
+  <section id="interests" class="fade-in">
     <h2>My Interests 🌎</h2>
     <p>I'm passionate about leveraging software and simulation to improve cities, sustainability, and quality of life. I'm especially drawn to solving hard systems problems in government, infrastructure, and civic tech—places where rigorous modeling can make a real difference for communities.</p>
   </section>
 
   <hr class="section-divider">
 
-  <section id="projects">
+  <section id="projects" class="fade-in">
     <h2>Projects 💻</h2>
     <div class="carousel">
       <button class="nav left" onclick="moveSlide(-1)">&#10094;</button>
@@ -62,15 +63,13 @@
     </div>
   </section>
 
-  <footer>
+  <footer class="main-footer">
     <p>Contact me: <a href="https://www.linkedin.com/in/jack-robert-keller/">LinkedIn</a> | <a href="mailto:jackrobert0627@outlook.com">jackrobert0627@outlook.com</a></p>
     <p><a href="Jack-Keller-Resume.pdf" download>Download My Resume</a></p>
     <p style="text-align: center;">
       <a href="https://github.com/JackKeller27" style="display: inline-flex; align-items: center;">
       GitHub
       <img src="github_icon.png" alt="GitHub" style="vertical-align: middle; width: 20px; height: 20px; margin-left: 6px;">
-      </a>
-    </p>
       </a>
     </p>
   </footer>

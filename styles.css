@@ -6,13 +6,43 @@ body {
   color: #333;
 }
 
-header {
+.hero {
   background: linear-gradient(rgba(0, 68, 102, 0.02), rgba(0, 68, 102, 0.02)), url('banner.jpg') center/cover no-repeat;
   opacity: 0.8;
   color: #E0E0E0;
   text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
-  padding: 2rem;
+  padding: 10rem 2rem;
   text-align: center;
+  font-size: 3rem;
+}
+
+.sticky-header, .sticky-footer {
+  display: none;
+  position: fixed;
+  width: 100%;
+  background: rgba(0, 68, 102, 0.8);
+  color: #E0E0E0;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+  text-align: center;
+  padding: 0.5rem;
+}
+
+.sticky-header {
+  top: 0;
+}
+
+.sticky-footer {
+  bottom: 0;
+}
+
+.fade-in {
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+
+.fade-in.visible {
+  opacity: 1;
 }
 
 section {
@@ -76,7 +106,7 @@ section {
   right: 0;
 }
 
-footer {
+.main-footer {
   text-align: center;
   padding: 1rem;
   background: #eee;
