@@ -39,7 +39,7 @@
         <div class="md:hidden flex items-center">
           <button id="menu-button" type="button"
             class="inline-flex items-center justify-center p-2 rounded-md text-gray-500 hover:text-gray-700 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-blue-500"
-            aria-controls="mobile-menu" aria-expanded="false">
+            aria-controls="mobile-menu" aria-expanded="false" onclick="window.scrollTo(0, 0)">
             <span class="sr-only">Open main menu</span>
             <svg class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
               stroke="currentColor" aria-hidden="true">
@@ -247,16 +247,19 @@
           <article class="project-card bg-gray-50 p-6 rounded-lg shadow-md overflow-hidden">
             <div class="md:flex md:space-x-6">
               <div class="md:w-1/3 mb-4 md:mb-0">
-                <img src="https://placehold.co/600x400/e2e8f0/334155?text=Project+Image+1" alt="Project 1 Screenshot"
+                <img src="projects_media/puerto-rico.jpeg" alt="Project 1 Screenshot"
                   class="w-full h-auto object-cover rounded-md shadow-sm"
                   onerror="this.onerror=null; this.src='https://placehold.co/600x400/e2e8f0/334155?text=Image+Error';">
               </div>
               <div class="md:w-2/3">
-                <h2 class="text-2xl font-semibold text-gray-800 mb-2">[Project Title 1]</h2>
+                <h2 class="text-2xl font-semibold text-gray-800 mb-2">Puerto Rico Planning Studio
+                </h2>
                 <p class="text-sm text-gray-500 mb-3">Technologies: [e.g., React, Node.js, Tailwind CSS]</p>
                 <p class="text-gray-700 mb-4">
-                  A brief description of your project. What problem does it solve? What was your role?
-                  What are the key features and functionalities? Keep it concise but informative.
+                  Conducted post-disaster reconstruction research in Puerto Rico, utilizing R and GIS mapping tools to
+                  analyze construction trends. Represented the team and presented findings at the 2024 Georgia Tech
+                  Sustainability Showcase.
+
                 </p>
                 <div class="space-x-3">
                   <a href="#"
@@ -273,16 +276,17 @@
           <article class="project-card bg-gray-50 p-6 rounded-lg shadow-md overflow-hidden">
             <div class="md:flex md:space-x-6">
               <div class="md:w-1/3 mb-4 md:mb-0">
-                <img src="https://placehold.co/600x400/dbeafe/1e3a8a?text=Project+Image+2" alt="Project 2 Screenshot"
-                  class="w-full h-auto object-cover rounded-md shadow-sm"
-                  onerror="this.onerror=null; this.src='https://placehold.co/600x400/dbeafe/1e3a8a?text=Image+Error';">
+                <video src="projects_media/kapyong-demo.mp4" class="w-full h-auto object-cover rounded-md shadow-sm"
+                controls controlsList="fullscreen"
+                  onerror="this.onerror=null; this.src='https://placehold.co/600x400/dbeafe/1e3a8a?text=Video+Error';">
+                </video>
               </div>
               <div class="md:w-2/3">
-                <h2 class="text-2xl font-semibold text-gray-800 mb-2">[Project Title 2]</h2>
+                <h2 class="text-2xl font-semibold text-gray-800 mb-2">Battle of Kapyong Simulation</h2>
                 <p class="text-sm text-gray-500 mb-3">Technologies: [e.g., Python, Django, PostgreSQL]</p>
                 <p class="text-gray-700 mb-4">
-                  Another project description. Highlight different skills or challenges.
-                  For example, you could discuss the project's impact or any interesting technical aspects.
+                  Agent-based model exploring terrain-weapon tradeoffs in military defense. Presented findings to
+                  professors, generals, and industry professionals.
                 </p>
                 <div class="space-x-3">
                   <a href="#"
@@ -299,16 +303,39 @@
           <article class="project-card bg-gray-50 p-6 rounded-lg shadow-md overflow-hidden">
             <div class="md:flex md:space-x-6">
               <div class="md:w-1/3 mb-4 md:mb-0">
-                <img src="https://placehold.co/600x400/ccfbf1/0f766e?text=Project+Image+3" alt="Project 3 Screenshot"
+                <img src="projects_media/car-classification.png" alt="Project 3 Screenshot"
                   class="w-full h-auto object-cover rounded-md shadow-sm"
                   onerror="this.onerror=null; this.src='https://placehold.co/600x400/ccfbf1/0f766e?text=Image+Error';">
               </div>
               <div class="md:w-2/3">
-                <h2 class="text-2xl font-semibold text-gray-800 mb-2">[Project Title 3]</h2>
+                <h2 class="text-2xl font-semibold text-gray-800 mb-2">AutoSpec (ML Car Classifier)</h2>
                 <p class="text-sm text-gray-500 mb-3">Technologies: [e.g., Swift, Firebase, UIKit]</p>
                 <p class="text-gray-700 mb-4">
-                  This project could showcase mobile development, data science, or another area of your expertise.
-                  Remember to tailor the description to the project.
+                  Used a Convolutional Neural Net along with Principal Component Analysis (PCA) to classify car models
+                  from images with ~88% accuracy. Built with TensorFlow and the cars196 dataset.
+                </p>
+                <div class="space-x-3">
+                  <a href="#"
+                    class="inline-block bg-gray-700 hover:bg-gray-800 text-white font-medium py-2 px-4 rounded-lg transition-colors text-sm">Source
+                    Code</a>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="project-card bg-gray-50 p-6 rounded-lg shadow-md overflow-hidden">
+            <div class="md:flex md:space-x-6">
+              <div class="md:w-1/3 mb-4 md:mb-0">
+                <img src="projects_media/campus-discovery-portal.png" alt="Project 3 Screenshot"
+                  class="w-full h-auto object-cover rounded-md shadow-sm"
+                  onerror="this.onerror=null; this.src='https://placehold.co/600x400/ccfbf1/0f766e?text=Image+Error';">
+              </div>
+              <div class="md:w-2/3">
+                <h2 class="text-2xl font-semibold text-gray-800 mb-2">Campus Discovery Portal</h2>
+                <p class="text-sm text-gray-500 mb-3">Technologies: [e.g., Swift, Firebase, UIKit]</p>
+                <p class="text-gray-700 mb-4">
+                  Developed a full-stack React + Java Spring Boot application to help students discover organizations
+                  and events on campus. Followed Scrum methodology on a small team.
                 </p>
                 <div class="space-x-3">
                   <a href="#"
