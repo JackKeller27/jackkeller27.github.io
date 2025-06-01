@@ -125,7 +125,7 @@ document.addEventListener('DOMContentLoaded', () => {
     currentYearElem.textContent = new Date().getFullYear();
   }
 
-  // ========= WOLF-SHEEP-GRASS PREDATOR-PREY SIMULATION (CONDITIONAL FULL BACKGROUND) ========= //
+  // ========= WOLF-SHEEP PREDATOR-PREY SIMULATION  ========= //
   const canvas = document.getElementById('ecosystemCanvas');
   if (!canvas) {
     console.error("Ecosystem canvas not found! Simulation will not run.");
@@ -134,31 +134,32 @@ document.addEventListener('DOMContentLoaded', () => {
   if (canvas) {
     const ctx = canvas.getContext('2d');
     let simulationIsCurrentlyRunning = true;
-    let simulationStepCounter = 0; // For alternating turns
+    let simulationStepCounter = 0;
 
     let params = {
       initialSheep: 80,
-      initialWolves: 50,
+      initialWolves: 35,
       sheepReproduceRate: 0.05,
       wolfReproduceRate: 0.03,
       wolfEnergyFromSheep: 20,
-      wolfEnergyLossPerTick: 0.5, // Applied on wolf's turn
+      wolfEnergyLossPerTick: 0.5,
       maxWolfEnergy: 100,
       wolfReproduceMinEnergy: 60,
       sheepMaxEnergy: 30,
       sheepEnergyFromGrass: 6,
-      sheepEnergyLossPerTick: 0.3, // Applied on sheep's turn
+      sheepEnergyLossPerTick: 0.3,
       sheepReproduceMinEnergy: 20,
-      grassRegrowthTicks: 25, // Ticks for grass to regrow (e.g. 25 * 750ms / 1000s = ~18s)
+      grassRegrowthTicks: 25,
       gridCellSize: 12,
       simulationTickMs: 750,
+      wolfVisionRadius: 5,
     };
 
     let gridWidth, gridHeight;
     let agents = [];
     let isActiveCellGrid;
     let grassGrid;
-    let simulationLogicTimer; // Renamed for clarity, for setInterval of updateSimulationStep
+    let simulationLogicTimer;
     let animationFrameId;
 
     const sliders = {
@@ -170,7 +171,21 @@ document.addEventListener('DOMContentLoaded', () => {
       initialWolves: document.getElementById('initialWolvesValue'),
     };
     const restartButton = document.getElementById('restartSimulation');
-    const pauseResumeButton = document.getElementById('stopSimulation'); // Renamed for clarity
+    const pauseResumeButton = document.getElementById('stopSimulation');
+
+    function updatePauseResumeButtonAppearance() {
+      if (pauseResumeButton) {
+        if (simulationIsCurrentlyRunning && window.isSimulationPageActive) {
+          pauseResumeButton.textContent = 'Stop';
+          pauseResumeButton.classList.remove('bg-green-500', 'hover:bg-green-600');
+          pauseResumeButton.classList.add('bg-red-500', 'hover:bg-red-600');
+        } else {
+          pauseResumeButton.textContent = 'Start';
+          pauseResumeButton.classList.remove('bg-red-500', 'hover:bg-red-600');
+          pauseResumeButton.classList.add('bg-green-500', 'hover:bg-green-600');
+        }
+      }
+    }
 
     function updateSliderValuesFromParams() {
       if (sliders.initialSheep && valueSpans.initialSheep) {
@@ -212,11 +227,10 @@ document.addEventListener('DOMContentLoaded', () => {
           if (simulationIsCurrentlyRunning) {
             if (simulationLogicTimer) clearInterval(simulationLogicTimer);
             simulationLogicTimer = setInterval(updateSimulationStep, params.simulationTickMs);
-            // User will manage button text in HTML/CSS
           } else {
             if (simulationLogicTimer) clearInterval(simulationLogicTimer);
-            // User will manage button text in HTML/CSS
           }
+          updatePauseResumeButtonAppearance(); // Update button after toggling state
         });
       }
     }
@@ -287,7 +301,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
       }
 
-      update() { // This is the sheep's action for its turn
+      update() {
         this.moveAndEat();
         this.energy -= params.sheepEnergyLossPerTick;
         if (this.energy <= 0) {
@@ -313,47 +327,72 @@ document.addEventListener('DOMContentLoaded', () => {
         this.energy = params.maxWolfEnergy / 1.5 + Math.random() * (params.maxWolfEnergy / 3);
       }
 
-      // New method for wolves to hunt adjacent sheep
-      huntAdjacentSheep() {
-        const directions = [[-1, 0], [1, 0], [0, -1], [0, 1], [-1, -1], [-1, 1], [1, -1], [1, 1]]; // 8 directions
-        for (let i = directions.length - 1; i > 0; i--) { // Shuffle for randomness if multiple sheep
-          const j = Math.floor(Math.random() * (i + 1));
-          [directions[i], directions[j]] = [directions[j], directions[i]];
-        }
-
-        for (const [dx, dy] of directions) {
-          const checkX = (this.x + dx + gridWidth) % gridWidth;
-          const checkY = (this.y + dy + gridHeight) % gridHeight;
-
-          const sheepInCell = agents.find(agent =>
-            agent.type === 'sheep' && agent.x === checkX && agent.y === checkY
-          );
-
-          if (sheepInCell) {
-            this.x = checkX; // Move to sheep's cell
-            this.y = checkY;
-            agents = agents.filter(agent => agent.id !== sheepInCell.id); // Eat sheep
-            this.energy += params.wolfEnergyFromSheep;
-            if (this.energy > params.maxWolfEnergy) this.energy = params.maxWolfEnergy;
-            return true; // Hunt successful
-          }
-        }
-        return false; // No adjacent sheep found
+      _distanceTo(otherAgent) {
+        const dx = Math.abs(this.x - otherAgent.x);
+        const dy = Math.abs(this.y - otherAgent.y);
+        const wrappedDx = Math.min(dx, gridWidth - dx);
+        const wrappedDy = Math.min(dy, gridHeight - dy);
+        return wrappedDx + wrappedDy;
       }
 
-      randomMove() { // Renamed original move for clarity
+      findAndMoveTowardsNearestSheep() {
+        let nearestSheep = null;
+        let minDistance = Infinity;
+
+        agents.forEach(agent => {
+          if (agent.type === 'sheep') {
+            const distance = this._distanceTo(agent);
+            if (distance < minDistance && distance <= params.wolfVisionRadius) {
+              minDistance = distance;
+              nearestSheep = agent;
+            }
+          }
+        });
+
+        if (nearestSheep) {
+          let moveX = 0; let moveY = 0;
+          if (nearestSheep.x !== this.x) {
+            const directDistX = nearestSheep.x - this.x;
+            const wrappedDistXRight = (nearestSheep.x + gridWidth) - this.x;
+            const wrappedDistXLeft = nearestSheep.x - (this.x + gridWidth);
+            if (Math.abs(directDistX) <= Math.abs(wrappedDistXRight) && Math.abs(directDistX) <= Math.abs(wrappedDistXLeft)) {
+              moveX = Math.sign(directDistX);
+            } else if (Math.abs(wrappedDistXRight) < Math.abs(wrappedDistXLeft)) {
+              moveX = 1;
+            } else { moveX = -1; }
+          }
+          if (nearestSheep.y !== this.y) {
+            const directDistY = nearestSheep.y - this.y;
+            const wrappedDistYDown = (nearestSheep.y + gridHeight) - this.y;
+            const wrappedDistYUp = nearestSheep.y - (this.y + gridHeight);
+            if (Math.abs(directDistY) <= Math.abs(wrappedDistYDown) && Math.abs(directDistY) <= Math.abs(wrappedDistYUp)) {
+              moveY = Math.sign(directDistY);
+            } else if (Math.abs(wrappedDistYDown) < Math.abs(wrappedDistYUp)) {
+              moveY = 1;
+            } else { moveY = -1; }
+          }
+          this.x = (this.x + moveX + gridWidth) % gridWidth;
+          this.y = (this.y + moveY + gridHeight) % gridHeight;
+          const sheepEaten = agents.find(agent => agent.type === 'sheep' && agent.x === this.x && agent.y === this.y);
+          if (sheepEaten) {
+            agents = agents.filter(agent => agent.id !== sheepEaten.id);
+            this.energy += params.wolfEnergyFromSheep;
+            if (this.energy > params.maxWolfEnergy) this.energy = params.maxWolfEnergy;
+          }
+          return true;
+        }
+        return false;
+      }
+
+      randomMove() {
         const nextPos = this._findValidMoveSpot();
         this.x = nextPos.x; this.y = nextPos.y;
       }
 
-      update() { // This is the wolf's action for its turn
-        let hunted = this.huntAdjacentSheep(); // Try to hunt first
-        if (!hunted) {
-          this.randomMove(); // If no hunt, then move randomly
-        }
-
+      update() {
+        let hunted = this.findAndMoveTowardsNearestSheep();
+        if (!hunted) { this.randomMove(); }
         this.energy -= params.wolfEnergyLossPerTick;
-
         if (this.energy >= params.wolfReproduceMinEnergy && Math.random() < params.wolfReproduceRate) {
           this.energy *= 0.6;
           const directions = [[-1, 0], [1, 0], [0, -1], [0, 1], [-1, -1], [-1, 1], [1, -1], [1, 1], [0, 0]];
@@ -375,7 +414,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }
 
       simulationIsCurrentlyRunning = true;
-      simulationStepCounter = 0; // Reset step counter
+      simulationStepCounter = 0;
 
       if (simulationLogicTimer) clearInterval(simulationLogicTimer);
       if (animationFrameId) cancelAnimationFrame(animationFrameId);
@@ -400,6 +439,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       simulationLogicTimer = setInterval(updateSimulationStep, params.simulationTickMs);
       animateCanvas();
+      updatePauseResumeButtonAppearance(); // Set initial button state
     }
 
     window.startSimulation = function () {
@@ -407,6 +447,7 @@ document.addEventListener('DOMContentLoaded', () => {
       simulationIsCurrentlyRunning = true;
       canvas.style.display = 'block';
       window.setupSimulation();
+      // updatePauseResumeButtonAppearance(); // Already called in setupSimulation
     };
 
     window.stopSimulationAndClearCanvas = function () {
@@ -422,14 +463,14 @@ document.addEventListener('DOMContentLoaded', () => {
         ctx.fillStyle = 'white';
         ctx.fillRect(0, 0, canvas.width, canvas.height);
       }
+      updatePauseResumeButtonAppearance(); // Ensure button reflects stopped state
     };
 
     function updateSimulationStep() {
       if (!window.isSimulationPageActive || !simulationIsCurrentlyRunning) return;
 
-      simulationStepCounter++; // Increment step counter
+      simulationStepCounter++;
 
-      // Grass regrowth happens every tick
       if (grassGrid && isActiveCellGrid) {
         for (let x = 0; x < gridWidth; x++) {
           for (let y = 0; y < gridHeight; y++) {
@@ -447,9 +488,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
       const currentAgents = [...agents];
       currentAgents.forEach(agent => {
-        if (!agents.find(a => a.id === agent.id)) return; // Agent might have died
+        if (!agents.find(a => a.id === agent.id)) return;
 
-        // Sheep act on even steps, Wolves on odd steps
         if (agent.type === 'sheep' && simulationStepCounter % 2 === 0) {
           agent.update();
         } else if (agent.type === 'wolf' && simulationStepCounter % 2 !== 0) {
