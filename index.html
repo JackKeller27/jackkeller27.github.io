@@ -51,6 +51,25 @@
     </div>
   </header>
 
+  <div class="md:hidden hidden bg-white shadow-lg" id="mobile-menu">
+    <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+      <a href="#" id="nav-mobile-about"
+        class="nav-link-mobile block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-100"
+        onclick="showSection('about', document.getElementById('nav-about'), true); return false;"
+        aria-current="page">About Me</a>
+      <a href="#" id="nav-mobile-experience"
+        class="nav-link-mobile block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-100"
+        onclick="showSection('experience', document.getElementById('nav-experience'), true); return false;">Experience &
+        Skills</a>
+      <a href="#" id="nav-mobile-projects"
+        class="nav-link-mobile block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-100"
+        onclick="showSection('projects', document.getElementById('nav-projects'), true); return false;">Projects</a>
+      <a href="#contact-info-heading" id="nav-mobile-contact-anchor"
+        class="nav-link-mobile block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-100"
+        onclick="navigateToContactInfo(document.getElementById('nav-contact-anchor'), true); return false;">Contact</a>
+    </div>
+  </div>
+
   <main class="container mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12">
 
     <section id="about" class="content-section active" aria-labelledby="about-heading">
