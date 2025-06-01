@@ -1,89 +1,347 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Jack Keller</title>
+  <title>Jack Keller Portfolio</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
-  <script defer src="script.js"></script>
+  <script src="script.js" defer></script>
 </head>
-<body>
-  <!-- Hero Section -->
-  <section class="section" id="hero">
-    <h1>Jack Keller</h1>
-    <p style="text-align: center;">
-      Computer Science | Modeling &amp; Simulation | Artificial Intelligence
-      <br><br>
-      Atlanta, GA
-    </p>
-    <div class="down-arrow">▼</div>
-  </section>
 
-  <!-- About Section -->
-  <section class="section" id="about">
-    <h2>About Me</h2>
-    <div style="display: flex; flex-direction: column; align-items: center; gap: 2rem;">
-      <img src="Headshot.jpg" alt="Portrait Photo" class="portrait" style="max-width: 200px; border-radius: 12px; object-fit: cover; object-position: top;">
-      <div style="max-width: 600px;">
-        <p>
-          Hello! My name is Jack Keller, and I’m a Master’s student at Georgia Tech studying Computer Science and specializing in Modeling & Simulation. I graduate this December, and I’m currently pursuing full-time software engineering roles beginning as early as January 2026.
-          <br><br>
-          The purpose of this site is to showcase a bit of my experience, what I’m passionate about, and some of the projects I’m most proud of. If you’d like to get in touch, please see below and reach out!
-        </p>
+<body class="antialiased leading-relaxed">
+
+  <header class="bg-white shadow-md sticky top-0 z-50">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+        <div class="flex-shrink-0">
+          <a href="#" onclick="showSection('about', this); return false;"
+            class="text-2xl font-bold text-gray-800 hover:text-blue-600 transition-colors">Jack Keller</a>
+        </div>
+
+        <nav class="hidden md:flex space-x-8 items-center">
+          <a href="#" id="nav-about"
+            class="nav-link text-gray-700 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 hover:border-blue-600 dark:hover:border-blue-400 border-transparent px-1 py-2 text-sm font-medium"
+            onclick="showSection('about', this); return false;" aria-current="page">About Me</a>
+          <a href="#" id="nav-experience"
+            class="nav-link text-gray-700 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 hover:border-blue-600 dark:hover:border-blue-400 border-transparent py-2 text-sm font-medium"
+            onclick="showSection('experience', this); return false;">Experience & Skills</a>
+          <a href="#" id="nav-projects"
+            class="nav-link text-gray-700 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 hover:border-blue-600 dark:hover:border-blue-400 border-transparent px-1 py-2 text-sm font-medium"
+            onclick="showSection('projects', this); return false;">Projects</a>
+          <a href="#contact-info-heading" id="nav-contact-anchor"
+            class="nav-link text-gray-700 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 border-transparent px-1 py-2 text-sm font-medium"
+            onclick="navigateToContactInfo(this, false); return false;">Contact</a>
+        </nav>
+
+        <div class="md:hidden flex items-center">
+          <button id="menu-button" type="button"
+            class="inline-flex items-center justify-center p-2 rounded-md text-gray-500 hover:text-gray-700 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-blue-500"
+            aria-controls="mobile-menu" aria-expanded="false">
+            <span class="sr-only">Open main menu</span>
+            <svg class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+              stroke="currentColor" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          </button>
+        </div>
       </div>
     </div>
-    <div class="down-arrow">▼</div>
-  </section>
+  </header>
 
-  <!-- Experience and Interests Section -->
-  <section class="section" id="experience">
-    <h2>Experience and Interests</h2>
-    <div class="experience-content" style="max-width: 600px;">
-      <p></p>
-      My experience includes several software engineering internships at <strong>J.J. Keller &amp; Associates, Inc.</strong> and <strong>Honeywell</strong>, as well as research with the <strong>Robotic Musicianship Lab</strong> and <strong>Puerto Rico Planning Studio</strong> (focused on post-disaster recovery) at Georgia Tech.
-      </p>
-      <p>
-      I believe what truly sets me apart is my ability to break down complex concepts into clear, comprehensible terms to help others learn and succeed — a skill I’ve honed over five semesters as a <strong>Teaching Assistant</strong> for Computer Organization &amp; Programming (CS 2110) and Algorithms (CS 3510/11) at GT. I'm very excited to lead Algorithms as <strong>Head TA</strong> in Fall 2025!
-      </p>
-      <p>
-      My primary interests lie in <strong>modeling and simulation</strong> and <strong>artificial intelligence</strong>. I'm especially passionate about applying these technologies to infrastructure and systems, urban planning, and sustainability to improve people’s lives and society as a whole.
-      </p>
-    </div>
-    <div class="down-arrow">▼</div>
-  </section>
+  <main class="container mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12">
 
-  <!-- Projects Section -->
-  <section class="section" id="projects">
-    <h2>Projects</h2>
-    <div class="carousel">
-      <button class="nav left" onclick="moveSlide(-1)">&#10094;</button>
-      <div class="carousel-track">
-        <div class="project active">
-          <img src="projects/puerto-rico.jpeg" alt="Puerto Rico Planning Studio">
-          <h3>Puerto Rico Planning Studio</h3>
+    <section id="about" class="content-section active" aria-labelledby="about-heading">
+      <div class="bg-white shadow-lg rounded-lg p-6 md:p-10">
+        <h1 id="about-heading" class="text-3xl sm:text-4xl font-bold text-gray-800 mb-6 text-center md:text-left">About
+          Me</h1>
+        <div class="md:flex md:items-start md:space-x-8">
+          <div class="flex-shrink-0 mb-6 md:mb-0 text-center md:text-left">
+            <img src="Headshot.jpg" alt="Portrait photo"
+              class="profile-picture rounded-full mx-auto md:mx-0 shadow-lg border-4 border-white object-cover w-40 h-40 object-top"
+              onerror="this.onerror=null; this.src='https://placehold.co/200x200/e0e7ff/4338ca?text=Image+Error';">
+          </div>
+          <div class="space-y-4 text-gray-700 text-lg">
             <p>
-            Conducted post-disaster reconstruction research in Puerto Rico, utilizing R and GIS mapping tools to analyze construction trends. Represented the team and presented findings at the 2024 Georgia Tech Sustainability Showcase.
+              Hello! My name is Jack Keller, and I’m a Master’s student at <span class="text-[#B3A369]"><strong>Georgia
+                  Tech</strong></span> studying <strong>Computer Science</strong> and
+              specializing in <strong>Modeling & Simulation</strong>. I graduate this December, and I’m currently
+              pursuing full-time
+              <strong>software engineering</strong> (or related) roles beginning as early as January 2026.
             </p>
+            <p>
+              Alongside several <strong>software engineering internships</strong> and <strong>research
+                experience</strong>, I believe what truly sets me apart is my ability to break down complex concepts
+              into clear, understandable
+              terms to help others learn and succeed — a skill I’ve honed as a <strong>Teaching
+                Assistant</strong> for both Computer Organization &amp; Programming (CS 2110) and Algorithms (CS
+              3510/11) at
+              GT. Building on the past four semesters as a TA, I'm very excited to lead Algorithms as <strong>Head
+                TA</strong> in Fall 2025!
+            </p>
+            <p>
+              My primary interests lie in <strong>modeling and simulation</strong> and <strong>artificial
+                intelligence</strong>. I aim to apply these technologies to areas like infrastructure and
+              systems, urban planning, and sustainability to improve people’s lives and society as a whole.
+            </p>
+          </div>
         </div>
-        <div class="project">
-          <video src="projects/kapyong-demo.mp4" alt="Battle of Kapyong Defense Simulation" controls style="max-width: 100%; border-radius: 8px;"></video>
-          <h3>Battle of Kapyong Defense Simulation</h3>
-          <p>Agent-based model exploring terrain-weapon tradeoffs in military defense. Presented findings to professors, generals, and industry professionals.</p>
-        </div>
-        <div class="project">
-          <img src="projects/car-classification.png" alt="ML Car Classifier">
-          <h3>Car Image Classification</h3>
-          <p>Used a Convolutional Neural Net along with Principal Component Analysis (PCA) to classify car models from images with ~88% accuracy. Built with TensorFlow and the cars196 dataset. </p>
-        </div>
-        <div class="project">
-          <img src="projects/campus-discovery-portal.png" alt="Campus Discovery Portal">
-          <h3>Campus Discovery Portal</h3>
-          <p>Developed a full-stack React + Java Spring Boot application to help students discover organizations and events on campus. Followed Scrum methodology on a small team.</p>
+
+        <hr class="my-8 md:my-12 border-gray-200 transition-colors duration-300">
+
+        <div id="contact-info-subsection" class="pt-6">
+          <h2 id="contact-info-heading" class="text-xl sm:text-2xl font-semibold text-gray-800 mb-6 scroll-mt-20">
+            Contact Info</h2>
+          <p class="text-gray-700 mb-4">If you'd like to get in touch, please reach out!</p>
+          <div class="space-y-4">
+            <a href="mailto:jackrobert0627@outlook.com"
+              class="flex items-center text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 transition-colors group text-med">
+              <svg
+                class="w-6 h-6 mr-3 text-slate-500 dark:text-slate-400 group-hover:text-blue-700 dark:group-hover:text-blue-300 transition-colors"
+                fill="currentColor" viewBox="0 0 20 20">
+                <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"></path>
+                <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"></path>
+              </svg>
+              jackrobert0627@outlook.com
+            </a>
+            <a href="Jack-Keller-Resume.pdf" target="_blank" rel="noopener noreferrer"
+              class="flex items-center text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 transition-colors group text-med">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
+                class="size-6 mr-3 text-slate-500 dark:text-slate-400 group-hover:text-blue-700 dark:group-hover:text-blue-300 transition-colors">
+                <path fill-rule="evenodd"
+                  d="M5.625 1.5c-1.036 0-1.875.84-1.875 1.875v17.25c0 1.035.84 1.875 1.875 1.875h12.75c1.035 0 1.875-.84 1.875-1.875V12.75A3.75 3.75 0 0 0 16.5 9h-1.875a1.875 1.875 0 0 1-1.875-1.875V5.25A3.75 3.75 0 0 0 9 1.5H5.625ZM7.5 15a.75.75 0 0 1 .75-.75h7.5a.75.75 0 0 1 0 1.5h-7.5A.75.75 0 0 1 7.5 15Zm.75 2.25a.75.75 0 0 0 0 1.5H12a.75.75 0 0 0 0-1.5H8.25Z"
+                  clip-rule="evenodd" />
+                <path
+                  d="M12.971 1.816A5.23 5.23 0 0 1 14.25 5.25v1.875c0 .207.168.375.375.375H16.5a5.23 5.23 0 0 1 3.434 1.279 9.768 9.768 0 0 0-6.963-6.963Z" />
+              </svg>
+              View Resume
+            </a>
+            <a href="https://linkedin.com/in/jack-robert-keller" target="_blank" rel="noopener noreferrer"
+              class="flex items-center text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 transition-colors group text-med">
+              <span
+                class="[&>svg]:h-5 [&>svg]:w-5 mr-3 text-slate-500 dark:text-slate-400 group-hover:text-blue-700 dark:group-hover:text-blue-300 transition-colors">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 448 512">
+                  <path
+                    d="M100.3 448H7.4V148.9h92.9zM53.8 108.1C24.1 108.1 0 83.5 0 53.8a53.8 53.8 0 0 1 107.6 0c0 29.7-24.1 54.3-53.8 54.3zM447.9 448h-92.7V302.4c0-34.7-.7-79.2-48.3-79.2-48.3 0-55.7 37.7-55.7 76.7V448h-92.8V148.9h89.1v40.8h1.3c12.4-23.5 42.7-48.3 87.9-48.3 94 0 111.3 61.9 111.3 142.3V448z" />
+                </svg>
+              </span>
+              LinkedIn
+            </a>
+            <a href="https://github.com/jackkeller27" target="_blank" rel="noopener noreferrer"
+              class="flex items-center text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 transition-colors group text-med">
+              <span
+                class="[&>svg]:h-5 [&>svg]:w-5 mr-3 text-slate-500 dark:text-slate-400 group-hover:text-blue-700 dark:group-hover:text-blue-300 transition-colors">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 496 512">
+                  <path
+                    d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3 .3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5 .3-6.2 2.3zm44.2-1.7c-2.9 .7-4.9 2.6-4.6 4.9 .3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3 .7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3 .3 2.9 2.3 3.9 1.6 1 3.6 .7 4.3-.7 .7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3 .7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3 .7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z" />
+                </svg>
+              </span>
+              GitHub
+            </a>
+          </div>
         </div>
       </div>
-      <button class="nav right" onclick="moveSlide(1)">&#10095;</button>
+    </section>
+
+    <section id="experience" class="content-section" aria-labelledby="experience-heading">
+      <div class="bg-white shadow-lg rounded-lg p-6 md:p-10">
+        <h1 id="experience-heading" class="text-3xl sm:text-4xl font-bold text-gray-800 mb-8">Experience & Skills</h1>
+
+        <div class="mb-10">
+          <h2 class="text-2xl font-semibold text-gray-700 mb-6 border-b-2 border-blue-500 pb-2">Work Experience</h2>
+          <div class="space-y-8">
+            <div class="p-1">
+              <h3 class="text-xl font-semibold text-gray-800">[Job Title]</h3>
+              <p class="text-md text-blue-600">[Company Name] | [City, State]</p>
+              <p class="text-sm text-gray-500 mb-2">[Dates of Employment, e.g., Jan 2022 - Present]</p>
+              <ul class="list-disc list-inside text-gray-700 space-y-1 pl-4">
+                <li>Describe your key responsibilities and achievements. Use action verbs.</li>
+                <li>Quantify your accomplishments whenever possible (e.g., "Increased user engagement by 15%").</li>
+                <li>Highlight skills used and problems solved.</li>
+              </ul>
+            </div>
+            <div class="p-1">
+              <h3 class="text-xl font-semibold text-gray-800">[Previous Job Title]</h3>
+              <p class="text-md text-blue-600">[Previous Company Name] | [City, State]</p>
+              <p class="text-sm text-gray-500 mb-2">[Dates of Employment]</p>
+              <ul class="list-disc list-inside text-gray-700 space-y-1 pl-4">
+                <li>Responsibility or achievement.</li>
+                <li>Another key contribution.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <h2 class="text-2xl font-semibold text-gray-700 mb-6 border-b-2 border-blue-500 pb-2">Skills</h2>
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div>
+              <h3 class="text-lg font-semibold text-gray-800 mb-3">Programming Languages</h3>
+              <ul class="list-disc list-inside text-gray-700 space-y-1 pl-4">
+                <li>JavaScript (ES6+)</li>
+                <li>Python</li>
+                <li>HTML5 & CSS3</li>
+                <li>SQL</li>
+              </ul>
+            </div>
+            <div>
+              <h3 class="text-lg font-semibold text-gray-800 mb-3">Frameworks & Libraries</h3>
+              <ul class="list-disc list-inside text-gray-700 space-y-1 pl-4">
+                <li>React.js / Vue.js / Angular</li>
+                <li>Node.js / Express.js</li>
+                <li>Tailwind CSS / Bootstrap</li>
+                <li>jQuery</li>
+              </ul>
+            </div>
+            <div>
+              <h3 class="text-lg font-semibold text-gray-800 mb-3">Tools & Platforms</h3>
+              <ul class="list-disc list-inside text-gray-700 space-y-1 pl-4">
+                <li>Git & GitHub</li>
+                <li>Docker</li>
+                <li>AWS / Azure / GCP</li>
+                <li>Figma / Adobe XD</li>
+              </ul>
+            </div>
+            <div>
+              <h3 class="text-lg font-semibold text-gray-800 mb-3">Other Skills</h3>
+              <ul class="list-disc list-inside text-gray-700 space-y-1 pl-4">
+                <li>Agile Methodologies</li>
+                <li>RESTful APIs</li>
+                <li>Database Management (e.g., PostgreSQL, MongoDB)</li>
+                <li>UI/UX Design Principles</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects" class="content-section" aria-labelledby="projects-heading">
+      <div class="bg-white shadow-lg rounded-lg p-6 md:p-10">
+        <h1 id="projects-heading" class="text-3xl sm:text-4xl font-bold text-gray-800 mb-8">Projects</h1>
+        <p class="text-gray-700 mb-6">Here are a few projects I'm most proud of. Check out my <a
+            href="https://www.linkedin.com/in/jack-robert-keller/" target="_blank" rel="noopener noreferrer"
+            class="text-blue-500 hover:text-blue-700">LinkedIn</a> for more!</p>
+        <div class="space-y-10">
+          <article class="project-card bg-gray-50 p-6 rounded-lg shadow-md overflow-hidden">
+            <div class="md:flex md:space-x-6">
+              <div class="md:w-1/3 mb-4 md:mb-0">
+                <img src="https://placehold.co/600x400/e2e8f0/334155?text=Project+Image+1" alt="Project 1 Screenshot"
+                  class="w-full h-auto object-cover rounded-md shadow-sm"
+                  onerror="this.onerror=null; this.src='https://placehold.co/600x400/e2e8f0/334155?text=Image+Error';">
+              </div>
+              <div class="md:w-2/3">
+                <h2 class="text-2xl font-semibold text-gray-800 mb-2">[Project Title 1]</h2>
+                <p class="text-sm text-gray-500 mb-3">Technologies: [e.g., React, Node.js, Tailwind CSS]</p>
+                <p class="text-gray-700 mb-4">
+                  A brief description of your project. What problem does it solve? What was your role?
+                  What are the key features and functionalities? Keep it concise but informative.
+                </p>
+                <div class="space-x-3">
+                  <a href="#"
+                    class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-lg transition-colors text-sm">View
+                    Live</a>
+                  <a href="#"
+                    class="inline-block bg-gray-700 hover:bg-gray-800 text-white font-medium py-2 px-4 rounded-lg transition-colors text-sm">Source
+                    Code</a>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="project-card bg-gray-50 p-6 rounded-lg shadow-md overflow-hidden">
+            <div class="md:flex md:space-x-6">
+              <div class="md:w-1/3 mb-4 md:mb-0">
+                <img src="https://placehold.co/600x400/dbeafe/1e3a8a?text=Project+Image+2" alt="Project 2 Screenshot"
+                  class="w-full h-auto object-cover rounded-md shadow-sm"
+                  onerror="this.onerror=null; this.src='https://placehold.co/600x400/dbeafe/1e3a8a?text=Image+Error';">
+              </div>
+              <div class="md:w-2/3">
+                <h2 class="text-2xl font-semibold text-gray-800 mb-2">[Project Title 2]</h2>
+                <p class="text-sm text-gray-500 mb-3">Technologies: [e.g., Python, Django, PostgreSQL]</p>
+                <p class="text-gray-700 mb-4">
+                  Another project description. Highlight different skills or challenges.
+                  For example, you could discuss the project's impact or any interesting technical aspects.
+                </p>
+                <div class="space-x-3">
+                  <a href="#"
+                    class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-lg transition-colors text-sm">View
+                    Live</a>
+                  <a href="#"
+                    class="inline-block bg-gray-700 hover:bg-gray-800 text-white font-medium py-2 px-4 rounded-lg transition-colors text-sm">Source
+                    Code</a>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="project-card bg-gray-50 p-6 rounded-lg shadow-md overflow-hidden">
+            <div class="md:flex md:space-x-6">
+              <div class="md:w-1/3 mb-4 md:mb-0">
+                <img src="https://placehold.co/600x400/ccfbf1/0f766e?text=Project+Image+3" alt="Project 3 Screenshot"
+                  class="w-full h-auto object-cover rounded-md shadow-sm"
+                  onerror="this.onerror=null; this.src='https://placehold.co/600x400/ccfbf1/0f766e?text=Image+Error';">
+              </div>
+              <div class="md:w-2/3">
+                <h2 class="text-2xl font-semibold text-gray-800 mb-2">[Project Title 3]</h2>
+                <p class="text-sm text-gray-500 mb-3">Technologies: [e.g., Swift, Firebase, UIKit]</p>
+                <p class="text-gray-700 mb-4">
+                  This project could showcase mobile development, data science, or another area of your expertise.
+                  Remember to tailor the description to the project.
+                </p>
+                <div class="space-x-3">
+                  <a href="#"
+                    class="inline-block bg-gray-700 hover:bg-gray-800 text-white font-medium py-2 px-4 rounded-lg transition-colors text-sm">Source
+                    Code</a>
+                </div>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="bg-gray-800 text-gray-300 mt-12">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-6 text-center">
+      <p class="text-sm mb-2">&copy; <span id="currentYear"></span> Jack Keller.</p>
+      <div class="flex justify-center space-x-4"> <a href="mailto:jackrobert0627@outlook.com"
+          class="flex items-center justify-center text-gray-300 hover:text-white transition-colors">
+          <span class="[&>svg]:h-5 [&>svg]:w-5">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"></path>
+              <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"></path>
+            </svg>
+          </span>
+        </a>
+        <a href="https://www.linkedin.com/in/jack-robert-keller/" target="_blank" rel="noopener noreferrer"
+          class="text-gray-300 hover:text-white transition-colors">
+          <span class="[&>svg]:h-5 [&>svg]:w-5">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 448 512">
+              <!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc. -->
+              <path
+                d="M100.3 448H7.4V148.9h92.9zM53.8 108.1C24.1 108.1 0 83.5 0 53.8a53.8 53.8 0 0 1 107.6 0c0 29.7-24.1 54.3-53.8 54.3zM447.9 448h-92.7V302.4c0-34.7-.7-79.2-48.3-79.2-48.3 0-55.7 37.7-55.7 76.7V448h-92.8V148.9h89.1v40.8h1.3c12.4-23.5 42.7-48.3 87.9-48.3 94 0 111.3 61.9 111.3 142.3V448z" />
+            </svg>
+          </span>
+        </a>
+        <a href="https://github.com/jackkeller27" target="_blank" rel="noopener noreferrer"
+          class="text-gray-300 hover:text-white transition-colors">
+          <span class="[&>svg]:h-5 [&>svg]:w-5">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 496 512">
+              <!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc. -->
+              <path
+                d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3 .3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5 .3-6.2 2.3zm44.2-1.7c-2.9 .7-4.9 2.6-4.6 4.9 .3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3 .7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3 .3 2.9 2.3 3.9 1.6 1 3.6 .7 4.3-.7 .7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3 .7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3 .7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z" />
+            </svg>
+          </span>
+        </a>
+      </div>
+      <p class="mt-2 text-sm"><a href="Jack-Keller-Resume.pdf" download="Jack-Keller-Resume.pdf"
+          class="text-blue-500 hover:text-blue-700">Download Resume</a></p>
     </div>
-  </section>
+  </footer>
 
 </body>
+
 </html>
