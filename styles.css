@@ -121,3 +121,32 @@ body {
   align-items: center;
   justify-content: center;
 }
+
+/* Styling for simulation sliders */
+.slider-thumb {
+  -webkit-appearance: none; /* Override default Apple look */
+  appearance: none;
+  height: 1rem; /* Or your preferred height */
+  background: #60a5fa; /* Tailwind blue-400 or your preferred color */
+  cursor: pointer;
+  border-radius: 9999px; /* Make it round */
+}
+
+.slider-thumb::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 1rem; /* Or your preferred size */
+  height: 1rem; /* Or your preferred size */
+  background: #2563eb; /* Tailwind blue-600 or your preferred color */
+  cursor: pointer;
+  border-radius: 50%;
+}
+
+.slider-thumb::-moz-range-thumb {
+  width: 1rem; /* Or your preferred size */
+  height: 1rem; /* Or your preferred size */
+  background: #2563eb; /* Tailwind blue-600 or your preferred color */
+  cursor: pointer;
+  border-radius: 50%;
+  border: 0;
+}
