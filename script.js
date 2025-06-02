@@ -150,7 +150,7 @@ document.addEventListener('DOMContentLoaded', () => {
       sheepEnergyLossPerTick: 0.3,
       sheepReproduceMinEnergy: 20,
       grassRegrowthTicks: 25,
-      gridCellSize: 12,
+      gridCellSize: 24,
       simulationTickMs: 750,
       wolfVisionRadius: 5,
     };
@@ -508,7 +508,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }
 
       ctx.clearRect(0, 0, canvas.width, canvas.height);
-      const grassColor = '#68D391';
+      const grassColor = '#4bb85f';
       const bareColor = '#D2B48C';
 
       if (isActiveCellGrid && grassGrid) {
