@@ -133,7 +133,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if (canvas) {
     const ctx = canvas.getContext('2d');
-    let simulationIsCurrentlyRunning = true;
+    let simulationIsCurrentlyRunning = false;
     let simulationStepCounter = 0;
 
     let params = {
@@ -439,7 +439,7 @@ document.addEventListener('DOMContentLoaded', () => {
         return;
       }
 
-      simulationIsCurrentlyRunning = true;
+      simulationIsCurrentlyRunning = false;
       simulationStepCounter = 0;
 
       if (simulationLogicTimer) clearInterval(simulationLogicTimer);
@@ -470,7 +470,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     window.startSimulation = function () {
       window.isSimulationPageActive = true;
-      simulationIsCurrentlyRunning = true;
+      simulationIsCurrentlyRunning = false;
       canvas.style.display = 'block';
       window.setupSimulation();
       // updatePauseResumeButtonAppearance(); // Already called in setupSimulation
@@ -534,7 +534,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }
 
       ctx.clearRect(0, 0, canvas.width, canvas.height);
-      const grassColor = '#53cf69';
+      const grassColor = '#598153'; //'#7ec572'; '#50754a'
       const bareColor = '#D2B48C';
 
       if (isActiveCellGrid && grassGrid) {
