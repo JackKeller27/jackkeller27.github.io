@@ -138,7 +138,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let params = {
       initialSheep: 80,
-      initialWolves: 35,
+      initialWolves: 15,
       sheepReproduceRate: 0.05,
       wolfReproduceRate: 0.03,
       wolfEnergyFromSheep: 20,
@@ -284,7 +284,8 @@ document.addEventListener('DOMContentLoaded', () => {
       constructor(x, y) {
         super(x, y);
         this.type = 'sheep';
-        this.color = '#A0AEC0';
+        this.icon = new Image();
+        this.icon.src = 'sheep-sprite.svg';
         this.energy = params.sheepMaxEnergy / 1.5 + Math.random() * (params.sheepMaxEnergy / 3);
       }
 
@@ -318,12 +319,25 @@ document.addEventListener('DOMContentLoaded', () => {
           }
         }
       }
+
+      draw(ctx) {
+        const drawSize = params.gridCellSize * 0.7;
+        const offset = (params.gridCellSize - drawSize) / 2;
+        ctx.drawImage(
+          this.icon,
+          this.x * params.gridCellSize + offset,
+          this.y * params.gridCellSize + offset,
+          drawSize,
+          drawSize
+        );
+      }
     }
     class Wolf extends Agent {
       constructor(x, y) {
         super(x, y);
         this.type = 'wolf';
-        this.color = '#E53E3E';
+        this.icon = new Image();
+        this.icon.src = 'wolf-sprite.svg';
         this.energy = params.maxWolfEnergy / 1.5 + Math.random() * (params.maxWolfEnergy / 3);
       }
 
@@ -404,6 +418,18 @@ document.addEventListener('DOMContentLoaded', () => {
           }
         }
         if (this.energy <= 0) agents = agents.filter(a => a.id !== this.id);
+      }
+
+      draw(ctx) {
+        const drawSize = params.gridCellSize * 0.7;
+        const offset = (params.gridCellSize - drawSize) / 2;
+        ctx.drawImage(
+          this.icon,
+          this.x * params.gridCellSize + offset,
+          this.y * params.gridCellSize + offset,
+          drawSize,
+          drawSize
+        );
       }
     }
 
@@ -523,15 +549,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }
 
       agents.forEach(agent => {
-        ctx.fillStyle = agent.color;
-        const drawSize = params.gridCellSize * 0.7;
-        const offset = (params.gridCellSize - drawSize) / 2;
-        ctx.fillRect(
-          agent.x * params.gridCellSize + offset,
-          agent.y * params.gridCellSize + offset,
-          drawSize,
-          drawSize
-        );
+        agent.draw(ctx);
       });
       animationFrameId = requestAnimationFrame(animateCanvas);
     }
