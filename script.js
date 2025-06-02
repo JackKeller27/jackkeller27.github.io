@@ -534,7 +534,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }
 
       ctx.clearRect(0, 0, canvas.width, canvas.height);
-      const grassColor = '#4bb85f';
+      const grassColor = '#53cf69';
       const bareColor = '#D2B48C';
 
       if (isActiveCellGrid && grassGrid) {
